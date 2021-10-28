@@ -1,0 +1,31 @@
+{
+  "name": "project4",
+  "version": "1.0.0",
+  "description": "Scheduling App",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon -r dotenv/config index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Unnati21/Karat_Unnati_Sched_App.git"
+  },
+  "author": "Karat and Unnati",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Unnati21/Karat_Unnati_Sched_App/issues"
+  },
+  "homepage": "https://github.com/Unnati21/Karat_Unnati_Sched_App#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "pg-promise": "^10.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.14"
+  }
+}
