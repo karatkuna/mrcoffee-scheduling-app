@@ -19,5 +19,5 @@ CREATE TABLE IF NOT EXISTS schedules (
   CONSTRAINT fk_users
     FOREIGN KEY(user_id)
     REFERENCES users(id)
-    ON DELETE
+    ON DELETE CASCADE 
 );
