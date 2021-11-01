@@ -12,6 +12,6 @@ const database = process.env.DB.DATABASE
 const cn = 'postgres://${user}:${password}@${host}:${port}/${database}'
 
 
-const db = pgp(connection)
+const db = pgp(cn)
 
 module.exports = db
