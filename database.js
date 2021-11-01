@@ -9,7 +9,7 @@ const database = process.env.DB.DATABASE
 
 
 //connection string
-const cn = 'postgres://postgres:123456@localhost:5432/project4_clientserver'
+const cn = 'postgres://${user}:${password}@${host}:${port}/${database}'
 
 
 const db = pgp(connection)
