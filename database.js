@@ -5,11 +5,11 @@ const user = process.env.DB_USER
 const password = process.env.DB_PASSWORD
 const host = process.env.DB_HOST
 const port = process.env.DB_PORT
-const database = process.env.DB.DATABASE
+const database = process.env.DB_DATABASE
 
 
 //connection string
-const cn = 'postgres://${user}:${password}@${host}:${port}/${database}'
+const cn = `postgres://${user}:${password}@${host}:${port}/${database}`
 
 
 const db = pgp(cn)

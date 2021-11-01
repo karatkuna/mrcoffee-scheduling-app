@@ -9,11 +9,11 @@ const errorRouter = require('./routes/error')
 
 const PORT = process.env.PORT || 3000
 
-app = express()
+const app = express()
 
 // BODY PARSER
 app.use(express.json())
-app.use(urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
 
 // MIDDLEWARE: LOGGER
 app.use(morgan('dev'))
