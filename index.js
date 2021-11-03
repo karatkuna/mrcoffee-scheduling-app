@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const ejs = require('ejs')
@@ -9,11 +10,11 @@ const errorRouter = require('./routes/error')
 
 const PORT = process.env.PORT || 3000
 
-app = express()
+const app = express()
 
 // BODY PARSER
 app.use(express.json())
-app.use(urlencoded({extended: true}))
+app.use(express.urlencoded({extended: true}))
 
 // MIDDLEWARE: LOGGER
 app.use(morgan('dev'))
@@ -27,7 +28,7 @@ app.use(express.static('public'))
 // ROUTES
 // app.use('/users', usersRouter)
 // app.use('/schedules', schedulesRouter)
- app.use('/', homeRouter)
+app.use('/', homeRouter)
 // app.use('*', errorRouter)
 
 app.listen(PORT, () => {
