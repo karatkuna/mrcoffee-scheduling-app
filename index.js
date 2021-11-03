@@ -1,3 +1,4 @@
+const dotenv = require('dotenv').config()
 const express = require('express')
 const morgan = require('morgan')
 const ejs = require('ejs')
@@ -27,7 +28,7 @@ app.use(express.static('public'))
 // ROUTES
 // app.use('/users', usersRouter)
 // app.use('/schedules', schedulesRouter)
- app.use('/', homeRouter)
+app.use('/', homeRouter)
 // app.use('*', errorRouter)
 
 app.listen(PORT, () => {
