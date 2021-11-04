@@ -4,19 +4,76 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Mr.Coffee's - Schedule Management App</title>
 </head>
-<body>
+<body class="flex-box">
   <%- include('../partials/header'); %>
 
   <main>
 
     <section class="welcome">
+      <h3>Hello, Karat &#128512;</h3>
       <h1>Welcome to Mr.Coffee Scheduling App</h1>
     </section>
 
-    
+    <section class="content">
+      <table>
+        <tr>
+          <% for(let i = 1; i <= weekday.length; i++) { %>
+            <% for(let j = 0; j < schedules.length; j++) { %>
+              <% if(schedules[j].day === i) { %>
+                <th><%= weekday[i] %></th>
+                <% break; %>
+              <% } %>
+            <% } %>
+          <% } %>
+        </tr>
 
+        <tr>
+          <% let day = "" %>
+          <% for(let i = 0; i < schedules.length; i++) { %>
+            <% if(i == 0 || schedules[i].day != day) { %>
+              <% if(i != 0) { %>
+              </td>
+              <% } %>
+              <td class="valign-top">
+            <% } %>
+
+            
+            <div class="shift-card flex-box card-color<%= schedules[i].user_id.toString().substr(-1, 1) %>">
+              <div class="shift-name-cir name-cir-color<%= schedules[i].user_id.toString().substr(-1, 1) %>"><%= schedules[i].firstname.substr(0, 1) + schedules[i].lastname.substr(0, 1) %></div>
+              <div>
+                <p class="shift-start-squ"><%= schedules[i].start_at %></p>
+                <p class="shift-end-squ"><%= schedules[i].end_at %></p>
+              </div>
+            </div>
+              
+            
+
+            <% day = schedules[i].day %>
+          <% } %>
+
+        </tr>
+
+      </table>
+    </section>
+
+    <section class="flex-box">
+      <div class='btn-add'>
+        <a href="/users/new">
+          <p class="btn btn-add-user ">ADD NEW USER</p>
+        </a>
+      </div>
+      <div class='btn-add'>
+        <a href="/schedules/new">
+          <p class='btn btn-add-schedule'>ADD NEW SCHEDULE</p>
+        </a>
+      </div>
+    </section>
 
   </main>
 

@@ -3,10 +3,27 @@ const db = require('../database')
 const bcrypt = require('bcryptjs')
 const router = express.Router()
 
+//Create the first routes to return all the informatin(GET USERS)
+router.get('/',(req, res) => {
+  db.any('SELECT * FROM users;')
+  .then((users) => {
+    console.log(users)
+    
+    res.render('pages/users', {
+      name:users.firstname + users.lastname,
+      users
+    })
 
+  })
+  .catch((error) => {
+    console.log(error)
+    res.redirect('/error?message=' + error.message)
+  })
+ 
+})
 
 router.post('/', (req, res) => {
-  console.log("Hello")
+ 
   const { firstname, lastname, email, password } = req.body
 
   const salt = bcrypt.genSaltSync(10)
