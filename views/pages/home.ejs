@@ -44,11 +44,11 @@
             <% } %>
 
             
-            <div class="shift-card flex-box card-color<%= schedules[i].user_id.toString().substr(-1, 1) %>">
-              <div class="shift-name-cir name-cir-color<%= schedules[i].user_id.toString().substr(-1, 1) %>"><%= schedules[i].firstname.substr(0, 1) + schedules[i].lastname.substr(0, 1) %></div>
+            <div class="shift-card card-color<%= schedules[i].user_id.toString().substr(-1, 1) %>">
+              <div class="shift-name-cir name-cir-color<%= schedules[i].user_id.toString().substr(-1, 1) %>"  title="<%= schedules[i].firstname + ' ' + schedules[i].lastname %>"><%= schedules[i].firstname.substr(0, 1) + schedules[i].lastname.substr(0, 1) %></div>
               <div>
-                <p class="shift-start-squ"><%= schedules[i].start_at %></p>
-                <p class="shift-end-squ"><%= schedules[i].end_at %></p>
+                <p class="shift-start-squ"><%= schedules[i].start_at.substr(1) %></p>
+                <p class="shift-end-squ"><%= schedules[i].end_at.substr(1) %></p>
               </div>
             </div>
               
