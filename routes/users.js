@@ -15,8 +15,7 @@ router.get('/',(req, res) => {
     
     res.render('pages/users', {
       name:users.firstname + users.lastname,
-      users,
-      message
+      users
     })
 
   })
