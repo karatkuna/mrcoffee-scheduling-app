@@ -92,7 +92,7 @@ router.get('/:id/schedules', (req, res) => {
   })
 })
 //display register form
-router.get('/register', (req, res) => {
+router.get('register', (req, res) => {
   res.render('pages/register', {
     errors: req.flash("error")
   })
@@ -102,7 +102,7 @@ router.get('/register', (req, res) => {
 // @access  public
 
 
-router.post('/', (req, res) => {
+router.post('/users', (req, res) => {
  
   const { firstname, lastname, email, password } = req.body
  // const cleanedEmail = cleanEmail(email)
@@ -117,7 +117,7 @@ router.post('/', (req, res) => {
     db.one('INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4) RETURNING id', [firstname, lastname, email, hash], user => user.id)
 
     .then(userId => {
-      req.send('success', 'User successfully created, please login.')
+      
       res.redirect('/users/login') 
 
     })
