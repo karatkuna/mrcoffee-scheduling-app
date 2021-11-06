@@ -27,11 +27,14 @@ app.set('view engine', 'ejs')
 // SET STATIC FOLDER
 app.use(express.static('public'))
 
+
+
+
 // ROUTES
  app.use('/users', usersRouter)
-// app.use('/schedules', schedulesRouter)
+app.use('/schedules', schedulesRouter)
  app.use('/', homeRouter)
-// app.use('*', errorRouter)
+app.use('*', errorRouter)
 
 app.listen(PORT, () => {
   console.log(`LISTENING AT http://localhost:${PORT}`)
