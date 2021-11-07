@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Information</title>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+     
+  
+     <table>
+      <thead>
+        <tr>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>Email</th> 
+          <th>Start_at</th>
+          <th>End_at</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td><%= user[0].firstname %></td>
+              <td><%= user[0].lastname %></td>
+              <td><%= user[0].email %></td>
+              
+          </tr>
+          <table>
+            <thead>
+              <tr>
+                <th>Day   </th><th> | </th>
+                <th>Start Time</th><th> | </th>
+                <th>End Time</th><th> | </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+              <td><%= schedules[0].day %></td>
+              <td><%= schedules[0].start_at %></td>
+              <td><%= schedules[0].end_at %></td>
+              
+                </tr>
+           
+            </tbody>
+          
+          </table>
+    
+      </tbody>
+     </table>
+
+     
+    
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>

@@ -8,7 +8,7 @@
     <title>Users</title>
 </head>
 <body>
-    <%- include('../partials/header'); %>
+    <%- include('../partials/header') %>
     <main>
         
         <section>
@@ -28,8 +28,7 @@
                           <th>LastName</th>
                           <th>Email</th>
                           <th>View</th>
-                          <th>Edit</th>
-                          <th>Delete</th>
+                          
                           
                         </tr>
                     </thead>
@@ -41,9 +40,9 @@
                           <td><%= users[i].firstname %></td>
                           <td><%= users[i].lastname %></td>
                           <td><%= users[i].email %></td>
-                          <td><!--<a><div>View</div></a>  INCLUDE View User--></td>
-                         <td><!--<a><div>Edit</div></a>  INCLUDE EDIT USER--> </td> 
-         <td> <!--<a><div>Delete</div></a>    INCLUDE DELETE USER-->  </td>
+                          <td><a href="/users/<%=users[i].id %>"><div>View</div></a> </td>
+                        
+         
                         
 
                         </tr>
@@ -57,6 +56,6 @@
 
 
     </main>
-    <!--Include Footer-->
+    <%- include('../partials/footer') %>
 </body>
 </html>

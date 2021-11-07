@@ -42,31 +42,21 @@ router.get('/',(req, res) => {
  
 })
 //create parameterized routes(get individual users)
-router.get('/:id', (req, res) =>{
+router.get('/:id', (req,res) => {
+  const userId = Number.parseInt(req.params.id, 10)
 
-    db.any('SELECT * FROM users;')
-    .then((users)=>{  
-    if(isNaN(req.params.id))
-    {
-        res.send("  Enter Valid Data  ")
-    }
-    else {
-             res.render('pages/users', {
-            id:req.params.id,
-            users
-               })
-      }
+  db.any('SELECT * FROM users WHERE id = $1', [userId])
+
+  .then((user) => {
+    res.render('pages/view-user', {
+      user
     })
-  
-      .catch((error) => {
-        console.log(error)
-        res.render('pages/error',{
-          message:error.message
-        })
-      
-      })
+  })
 
-    })  
+  .catch((error) => {
+    res.redirect("/error?message=" + error.message)
+  })
+})
 //get userid/schedules
 router.get('/:id/schedules', (req, res) => {
   const userId = Number.parseInt(req.params.id)
@@ -91,18 +81,44 @@ router.get('/:id/schedules', (req, res) => {
     })
   })
 })
-//display register form
-router.get('register', (req, res) => {
-  res.render('pages/register', {
-    errors: req.flash("error")
+
+router.get('/:id/:day/schedules', (req, res) => {
+  const userId = Number.parseInt(req.params.id, 10)
+  const day = Number.parseInt(req.params.day, 10)
+
+  const getUsers = db.any('SELECT * FROM users')
+  const getSchedules = db.any(`SELECT user_id, username, day, TO_CHAR(start_at, 'HH.MIAM') start_at, TO_CHAR(end_at, 'HH.MIAM') end_at FROM schedules s JOIN users u ON u.id=s.user_id ORDER BY user_id, day`);
+
+  Promise.all([getUsers,getSchedules]).then(data => {
+    const users = data[0]
+    const schedules = data[1]
+    const newArraySchedule = rearrangeArraySchedule(schedules)
+    const days = getWorkingDays(schedules)
+
+
+
+    res.render('pages/schedules', {
+      users,
+      schedules,
+      newArraySchedule,
+      days,
+      weekday,
+      showById: true,
+      userId,
+      day
+    })
   })
+})
+//display register form
+router.get('/register', (req, res) => {
+  res.render('pages/register')
 })
 // @path    '/users/register'
 // @desc    register a new user
 // @access  public
 
 
-router.post('/users', (req, res) => {
+router.post('/', (req, res) => {
  
   const { firstname, lastname, email, password } = req.body
  // const cleanedEmail = cleanEmail(email)

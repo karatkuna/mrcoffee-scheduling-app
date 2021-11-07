@@ -10,11 +10,11 @@
 </head>
 <body>
      <!-- ERRORS -->
-  <% if (errors.length > 0) { %>
-    <% for (let i = 0; i < errors.length; i++) { %>
-        <% } %>
-        <% } %>
-        <form method="POST" action="/users/register" novalidate>
+     <% if (errors.length > 0) { %>
+      <% for (let i = 0; i < errors.length; i++) { %>
+          <% } %>
+          <% } %>
+        <form method="POST" action="/views/pages/users.ejs" novalidate>
             
             <div>
                 <label for="fname">FirstName:</label>
@@ -42,6 +42,7 @@
               </div>
 
               <button type ="button">Sign Up</button>
+              <!--<input type="reset" class="">-->
 
         </form>
     
