@@ -2,24 +2,27 @@ const express = require('express')
 const db = require('../database')
 const bcrypt = require('bcryptjs')
 const router = express.Router()
-const { redirectToHome } = require('./middleware/redirect')
-const {
-  rearrangeArraySchedule,
-  getWorkingDays,
-  weekday, 
-  validateInput} = require('./middleware/app')
+//const { redirectToHome } = require('./middleware/redirect')
+//const {
+ // rearrangeArraySchedule,
+  //getWorkingDays,
+ // weekday, 
+ // validateInput} = require('./middleware/app')
 
-  const isValid = (value, regex) => {
-    return regex.test(value)
-  }
+ // const isValid = (value, regex) => {
+  //  return regex.test(value)
+  //}
   
-  const cleanEmail = (email) => {
-  return email ? email.toLowerCase().trim() : ""
-}
+  //const cleanEmail = (email) => {
+ /// return email ? email.toLowerCase().trim() : ""
+//}
 
 
 
-
+router.get('/new', (req, res) => {
+  console.log('hello')
+  res.render('pages/register')
+})
 //Create the first routes to return all the informatin(GET USERS)
 router.get('/',(req, res) => {
   db.any('SELECT * FROM users;')
@@ -110,9 +113,7 @@ router.get('/:id/:day/schedules', (req, res) => {
   })
 })
 //display register form
-router.get('/register', (req, res) => {
-  res.render('pages/register')
-})
+
 // @path    '/users/register'
 // @desc    register a new user
 // @access  public
