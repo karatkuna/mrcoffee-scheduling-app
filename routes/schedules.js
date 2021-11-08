@@ -132,5 +132,48 @@ router.post('/', (req, res) => {
   })
 })
 
+router.post('/view-user',(req, res)=>{
+  
+  const {user_id} = req.body
+
+  db.any("SELECT *, TO_CHAR(start_time,'HH12:MI AM')start_time ,TO_CHAR(end_time,'HH12:MI AM')end_time FROM schedules WHERE user_id =$1 ",[user_id])
+  .then((schedules)=>{
+
+        db.any('SELECT * FROM users WHERE id =$1',[user_id])
+  
+    .then((users)=>{
+      
+ res.render('pages/userinfo',{
+         
+                  
+                    id:user_id,
+                    firstname:users[0].firstname,
+                    lastname:users[0].lastname,
+                    email:users[0].email, 
+                    days,
+                    schedules   
+ 
+       })
+      })
+
+    })
+  
+    
+    .catch((error)=>{
+ 
+      console.log(error)
+      
+      res.redirect("/error?message=" + error.message)
+          }) 
+  
+       .catch((error)=>{
+ 
+        console.log(error)
+        
+        res.redirect("/error?message=" + error.message)
+            })
+  
+  })
+
 
 module.exports = router

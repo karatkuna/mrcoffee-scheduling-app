@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Users</title>
+</head>
+<body>
+    <%- include('../partials/header') %>
+    <main>
+        
+        <section>
+            <div>
+               <h1>Users</h1>
+            </div>
+           
+           
+       </section>
+
+      <section>
+          <form method="POST">
+              <table>
+                  <thead>
+                      <tr>
+                          <th>FirstName</th>
+                          <th>LastName</th>
+                          <th>Email</th>
+                          <th>View</th>
+                          
+                          
+                        </tr>
+                    </thead>
+
+                      <tbody>
+                          <% for(let i = 0; i < users.length; i++) { %>
+                       
+                        <tr>  
+                          <td><%= users[i].firstname %></td>
+                          <td><%= users[i].lastname %></td>
+                          <td><%= users[i].email %></td>
+                          <td><a href="/users/<%=users[i].id %>"><div>View</div></a> </td>
+                        
+         
+                        
+
+                        </tr>
+                          <% } %>
+                      </tbody>
+
+                 </table>
+          </form>
+      </section> 
+
+
+
+    </main>
+    <%- include('../partials/footer') %>
+</body>
+</html>
