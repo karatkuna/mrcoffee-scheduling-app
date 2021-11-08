@@ -77,7 +77,7 @@ function validateInput(input) {
   const regex = {
     firstname: /^[A-Za-zÀ-ÖØ-öø-ÿ -'\.]+$/,
     lastname: /^[A-Za-zÀ-ÖØ-öø-ÿ -'\.]+$/,
-    username: /^[a-zA-Z0-9]+$/,
+   username: /^[a-zA-Z0-9]+$/,
     email: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
     password: /^[a-zA-Z0-9]{4,15}$/
   }

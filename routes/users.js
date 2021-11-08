@@ -17,12 +17,12 @@ const router = express.Router()
  /// return email ? email.toLowerCase().trim() : ""
 //}
 
-
-
 router.get('/new', (req, res) => {
   console.log('hello')
   res.render('pages/register')
 })
+
+
 //Create the first routes to return all the informatin(GET USERS)
 router.get('/',(req, res) => {
   db.any('SELECT * FROM users;')
@@ -113,7 +113,6 @@ router.get('/:id/:day/schedules', (req, res) => {
   })
 })
 //display register form
-
 // @path    '/users/register'
 // @desc    register a new user
 // @access  public
