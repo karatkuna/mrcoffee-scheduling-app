@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Mr.Coffee's - Schedule Management App</title>
+</head>
+<body class="flex-box">
+  
+  <%- include('../partials/header'); %>
+
+  <main>
+
+    <div class="title">
+      <h1>Add New Schedule</h1>
+    </div>
+
+    <form method="POST" action="/schedules">
+      <section class="card-detail">
+      
+        <div class="schedule-info">
+          <p class="txt-field">Name: </p>
+          <p class="txt-value">
+          <% if(typeof user_id != 'undefined') { %>
+          <%= user_name %><input type="text" id="user_id" name="user_id" value="<%= user_id %>" hidden>
+          <% }else{ %>
+            <select id="user_id" class="width200" name="user_id">
+              <% for(let i = 0; i < users.length; i++) { %>
+              <option value="<%= users[i].id %>"><%= users[i].firstname + ' ' + users[i].lastname %></option>
+              <% } %>
+            </select>
+          <% } %>
+          </p>
+        </div>
+        
+        <div class="schedule-info">
+          <p class="txt-field">Day: </p>
+          <p class="txt-value">
+            <% if(typeof day != 'undefined') { %>
+              <%= weekday[day] %><input type="text" id="day" name="day" value="<%= day %>" hidden>
+            <% }else{ %>
+              <select id="day" class="width200" name="day">
+                <% for(let i = 1; i < weekday.length; i++) { %>
+                <option value="<%= i %>"><%= weekday[i] %></option>
+                <% } %>
+              </select>
+            <% } %>
+          </p>
+        </div>
+
+        <div class="schedule-info">
+          <p class="txt-field">Start At: </p>
+          <p class="txt-value">
+            <select id="start_at_hh" name="start_at_hh">
+            <% for(let i = 1; i <= 12; i++) { %>
+            <option value="<%= i %>"><%= i %></option>
+            <% } %>
+            </select>
+            <select id="start_at_mm" name="start_at_mm">
+            <% for(let i = 0; i <= 60; i++) { %>
+              <% if(i < 10) { %>
+                <option value="<%= i %>"><%= '0' + i %></option>
+              <% }else{ %>
+                <option value="<%= i %>"><%= i %></option>
+              <% } %>
+            <% } %>
+            </select>
+            <select id="start_am" name="start_am">
+              <option value="AM">AM</option> 
+              <option value="PM">PM</option>
+            </select>
+          </p>
+        </div>
+
+        <div class="schedule-info">
+          <p class="txt-field">End At: </p>
+          <p class="txt-value">
+            <select id="end_at_hh" name="end_at_hh">
+              <% for(let i = 1; i <= 12; i++) { %>
+              <option value="<%= i %>"><%= i %></option>
+              <% } %>
+            </select>
+            <select id="end_at_mm" name="end_at_mm">
+              <% for(let i = 0; i <= 60; i++) { %>
+                <% if(i < 10) { %>
+                  <option value="<%= i %>"><%= '0' + i %></option>
+                <% }else{ %>
+                  <option value="<%= i %>"><%= i %></option>
+                <% } %>
+              <% } %>
+            </select>
+            <select id="end_am" name="end_am">
+              <option value="AM">AM</option> 
+              <option value="PM">PM</option>
+            </select>
+          </p>
+        </div>
+
+      </section>
+
+      <div class="duo-button">
+        <button type="submit" class="btn btnGreen btn-action">Save</button>
+        <input type="reset" class="btn btnRed btn-action">
+      </div>
+
+    </form>
+  
+  </main>
+
+  <!-- footer -->
+</body>
+</html>
