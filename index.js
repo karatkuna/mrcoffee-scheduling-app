@@ -27,7 +27,7 @@ app.use(express.static('public'))
 
 // ROUTES
 // app.use('/users', usersRouter)
-// app.use('/schedules', schedulesRouter)
+app.use('/schedules', schedulesRouter)
 app.use('/', homeRouter)
 // app.use('*', errorRouter)
 
