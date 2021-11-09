@@ -40,6 +40,13 @@ th, td {
   padding: 15px;
 }
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active  {
+    box-shadow: 0 0 0 30px white inset !important;
+}
+
 input[type=text], input[type=password] {
   min-width: 300px;
   padding-left: 10px;
@@ -413,6 +420,50 @@ main {
   justify-content: flex-start;
 }
 
+/* || LOGIN PAGE */
+
+.body-login {
+  height: 100%;
+  position: relative;
+}
+
+.login-box {
+  width: 400px;
+  padding: 30px 15px;
+  background-color: #F8F8F8;
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translateY(-50%) translateX(-50%);
+  transform: translateY(-50%) translateX(-50%);
+  border-radius: 25px;
+}
+
+.login-box div {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-input {
+  width: 200px;
+  margin-left: 10px;
+  border: 1px solid lightgray;
+}
+
+.btn-login {
+  margin-top: 30px;
+  padding: 15px 140px;
+  background-color: lightslategray;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
 @media only screen and (max-width: 1050px) {
   .nav-box {
     display: none;
@@ -455,6 +506,4 @@ main {
     width: 100px;
     text-align: left;
   }
-
-
 }
