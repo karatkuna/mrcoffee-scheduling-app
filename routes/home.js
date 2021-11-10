@@ -9,12 +9,13 @@ router.get('/', redirectToLogin, (req, res) => {
   db.any("SELECT s.user_id,u.firstname,u.lastname, day, TO_CHAR(start_at, 'HH.MIam') start_at, TO_CHAR(end_at, 'HH.MIam') end_at FROM schedules s JOIN users u ON u.id=s.user_id ORDER BY day, start_at")
   
   .then(schedules => {
-    const userId = req.session.userId;
+    //const userId = req.session.userId;
+
+    console.log(schedules)
     res.render('pages/home', {
       weekday,
       schedules
     })
-    
   })
   
 

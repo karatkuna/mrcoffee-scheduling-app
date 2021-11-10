@@ -1,61 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <title>Users</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Mr.Coffee's - Schedule Management App</title>
 </head>
 <body>
-    <%- include('../partials/header') %>
-    <main>
+  
+  <%- include('../partials/header'); %>
+
+  <main>
+
+    <div class="title">
+      <h1>User Information</h1>
+      <a href="/users/new"><div class="btn btnGreen btn-triple">Add New User</div></a>
+    </div>
+
+    <section>
+        <form id="myform" method="POST" action="/" defer>
+            <table>
+                <thead>
+                    <tr>
+                        <th>FirstName</th>
+                        <th>LastName</th>
+                        <th>Email</th>
+                        <th>View</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% for(let i = 0; i < users.length; i++) { %>
+                    <tr>  
+                        <td><%= users[i].firstname %></td>
+                        <td><%= users[i].lastname %></td>
+                        <td><%= users[i].email %></td>
+                        <td class="text-center"><a class="btn-ico btn-view-user" href="/users/<%=users[i].id %>"><i class='far fa-file-alt'></i></a></td>
+                        <td class="text-center"><button type="button" id="DELETE_<%= users[i].id %>" class="btn-ico btn-del-user"><i  class="fa fa-trash-o"></i></button></td>
+                    </tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <input type="text" id="user_id" name="user_id" hidden>
+        </form>
+    </section> 
+    <%- include('../partials/footer'); %>
+  </main>
+
+  <script>
+    if (document.addEventListener) document.addEventListener("click", handleClick, false)
+    else if (document.attachEvent) document.attachEvent("onclick", handleClick)
+  
+    function handleClick(event) {
+      event = event || window.event;
+      event.target = event.target || event.srcElement;
+  
+      const element = event.target;
+      let e = null
+
+      if(element.type == 'button') e = element
+      if(element.parentNode.type == 'button') e = element.parentNode
+
+      if(e != null) {
+        const action = e.id.split("_")
         
-        <section>
-            <div>
-               <h1>Users</h1>
-            </div>
-           
-           
-       </section>
-
-      <section>
-          <form method="POST">
-              <table>
-                  <thead>
-                      <tr>
-                          <th>FirstName</th>
-                          <th>LastName</th>
-                          <th>Email</th>
-                          <th>View</th>
-                          
-                          
-                        </tr>
-                    </thead>
-
-                      <tbody>
-                          <% for(let i = 0; i < users.length; i++) { %>
-                       
-                        <tr>  
-                          <td><%= users[i].firstname %></td>
-                          <td><%= users[i].lastname %></td>
-                          <td><%= users[i].email %></td>
-                          <td><a href="/users/<%=users[i].id %>"><div>View</div></a> </td>
-                        
-         
-                        
-
-                        </tr>
-                          <% } %>
-                      </tbody>
-
-                 </table>
-          </form>
-      </section> 
-
-
-
-    </main>
-    <%- include('../partials/footer') %>
+        document.getElementById("user_id").value = action[1]
+        document.getElementById("myform").action = "/users?_method=" + action[0]
+        document.getElementById("myform").submit()
+      }
+    }
+  </script>
 </body>
 </html>

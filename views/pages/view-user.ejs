@@ -1,37 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Information</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Mr.Coffee's - Schedule Management App</title>
 </head>
 <body>
-    <%- include('../partials/header') %>
-    <main>
-     
   
-     <table>
+  <%- include('../partials/header'); %>
+
+  <main>
+
+    <div class="title">
+      <h1>Profile</h1>
+    </div>
+
+    <table class="user-info">
       <thead>
         <tr>
           <th>FirstName</th>
           <th>LastName</th>
           <th>Email</th> 
-         
         </tr>
       </thead>
       <tbody>
           <tr>
-              <td><%= user[0].firstname %></td>
-              <td><%= user[0].lastname %></td>
-              <td><%= user[0].email %></td>
-              
+            <td><%= user[0].firstname %></td>
+            <td><%= user[0].lastname %></td>
+            <td><%= user[0].email %></td>
           </tr>
       </tbody>
      </table>
      
+    <div class="title">
+      <h1>Work Schedule</h1>
+    </div>
 
-    <table>
+    <table class="user-info">
         <thead>
           <tr>
             <th>Day</th>
@@ -43,17 +53,17 @@
           <% for (let i = 0; i < schedules.length; i++) { %>
             <tr class="rUser r<%= schedules[i].user_id %>">
               <td><%= weekday[schedules[i].day] %></td>
+              <% if(parseInt(schedules[i].start_at.split("."), 10) < 10) schedules[i].start_at = schedules[i].start_at.substr(1) %>
+              <% if(parseInt(schedules[i].end_at.split("."), 10) < 10) schedules[i].end_at = schedules[i].end_at.substr(1) %>
               <td><%= schedules[i].start_at %></td>
               <td><%= schedules[i].end_at %></td>
             </tr>
           <% } %>
         </tbody>
-      
       </table>
+    <%- include('../partials/footer'); %>
+  </main>
 
-     
-    
-    </main>
-    <%- include('../partials/footer') %>
+  <!-- footer -->
 </body>
 </html>

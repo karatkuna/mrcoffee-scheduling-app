@@ -1,10 +1,10 @@
 require('dotenv').config()
 
 const express = require('express')
+const methodOverride = require('method-override')
 const session = require('express-session')
 const morgan = require('morgan')
 const ejs = require('ejs')
-const session = require('express-session')
 const flash = require('express-flash')
 
 const homeRouter = require('./routes/home')
@@ -13,7 +13,6 @@ const logoutRouter = require('./routes/logout')
 const usersRouter = require('./routes/users')
 const schedulesRouter = require('./routes/schedules')
 const errorRouter = require('./routes/error')
-const logoutRouter = require('./routes/logout')
 
 const PORT = process.env.PORT || 3000
 
@@ -39,11 +38,14 @@ app.use(session({
   resave: false,
   saveUninitailized: false,
   cookie: {
-    maxAge: 1000 * 60  * 60 * 24
+    maxAge: 1000*60*60*24
   }
 }))
 
 app.use(flash())
+
+// override with POST having ?_method=DELETE
+app.use(methodOverride('_method'))
 
 // ROUTES
 app.use('/login', loginRouter)

@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <title>Mr.Coffee's - Schedule Management App</title>
 </head>
-<body>
+<body onload="loadSchedules()">
   <%- include('../partials/header'); %>
   
   <main>
@@ -29,8 +29,8 @@
         <thead>
           <tr>
             <th></th>
-            <% for(let i = 0; i < days.length; i++) { %>
-            <th><%= weekday[days[i]] %></th>
+            <% for(let i = 1; i < weekday.length; i++) { %>
+            <th><%= weekday[i] %></th>
             <% } %>
           </tr>
         </thead>
@@ -39,10 +39,10 @@
           <% for(let i = 0; i < users.length; i++) { %>
           <tr>
             <td class="text-left"><%= users[i].firstname %></td>
-            <% for(let j = 0; j < days.length; j++) { %>
-              <% let key = users[i].id + " " + days[j]; %>
-              <% if(typeof newArraySchedule[users[i].id + " " + days[j] + " start"] != 'undefined') { %>
-                <% if(userId == users[i].id && typeof day != 'undefined' && day == days[j]) { %>
+            <% for(let j = 1; j < weekday.length; j++) { %>
+              <% let key = users[i].id + " " + j; %>
+              <% if(typeof newArraySchedule[key + " start"] != 'undefined') { %>
+                <% if(userId == users[i].id && typeof day != 'undefined' && day == weekday[j]) { %>
                   <td class="new-record td-schedule">
                 <% }else{ %>
                   <td class="td-schedule">
@@ -54,7 +54,7 @@
                   </td>                
               <% }else{ %>
                 <td class="text-center">
-                  <a href="/schedules/<%= users[i].id + '/' + days[j] %>/new"><button class="s-btn-add">+</button></a>
+                  <a href="/schedules/<%= users[i].id + '/' + weekday[j] %>/new"><button class="s-btn-add">+</button></a>
                 </td>
               <% } %>
             <% } %>
@@ -107,6 +107,8 @@
 
     <input type="text" name="showById" id="showById" value="<%= showById %>" hidden>
     <input type="text" name="userId" id="userId" value="<%= userId %>" hidden>
+
+    <%- include('../partials/footer'); %>
   </main>
 
   <!-- footer -->
