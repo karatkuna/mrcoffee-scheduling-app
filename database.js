@@ -18,8 +18,6 @@ const cn = `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_DATA
 
 
 
-// const cn = 'postgres://postgres:karat1234@localhost:5432/project4_clientserver'
-
 
 
 
