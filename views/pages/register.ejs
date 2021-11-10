@@ -9,8 +9,13 @@
     
 </head>
 <body>
-    
-        <form method="POST" action="/users" novalidate>
+    <!--ERROR-->
+    <% if (errors && errors.length > 0){ %>
+   <% for (let i = 0; i < errors.length; i++){ %>
+     <p class ="error"><%= errors[i] %> </p>
+   <% } %>
+   <% } %>
+        <form method="POST" action="/users/new" novalidate>
             
             <div>
                 <label for="fname">FirstName</label>

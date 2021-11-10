@@ -2,11 +2,11 @@ const express = require('express')
 const db = require('../database')
 const bcrypt = require('bcryptjs')
 const router = express.Router()
-const flash = require('express-flash')
+//const flash = require('express-flash')
 
 
 
-router.use(flash())
+//router.use(flash())
 //const { redirectToHome } = require('./middleware/redirect')
 const {
   rearrangeArraySchedule,
@@ -31,8 +31,10 @@ const {
 
 router.get('/new', (req, res) => {
   console.log('hello')
+  console.log(req.session)
+  
   res.render('pages/register', {
-    //errors: req.flash("error")
+   errors: req.flash("error")
   })
 })
 
@@ -143,18 +145,18 @@ router.get('/:id/:day/schedules', (req, res) => {
 // @access  public
 
 
-router.post('/', (req, res) => {
+router.post('/new', (req, res) => {
  console.log('Hello')
   const { firstname, lastname, email, password, confirmPassword } = req.body
   const cleanedEmail = cleanEmail(email)
  
    // 1. validate! - yup and joi are decent validation packages
 
-   if (!firstname||!lastname||!email || !password || !confirmPassword ) return res.send("error", "Please enter all fields")
-   if (!isValid(cleanedEmail, emailRegex)) return res.flash("error", "Email not valid")
-   if (!isValid(password, passwordRegex)) return res.flash("error", "Password must be 6 characters or more")
-   if (password !== confirmPassword)  return res.flash("error", "Passwords don't match")
-   //if (req.session.flash.error.length!= 'undefined' ||  req.session.flash.error.length > 0) return res.redirect("/register")
+   if (!firstname||!lastname||!email || !password || !confirmPassword )  req.flash("error", "Please enter all fields")
+   if (!isValid(cleanedEmail, emailRegex)) req.flash("error", "Email not valid")
+   if (!isValid(password, passwordRegex)) req.flash("error", "Password must be 6 characters or more")
+   if (password !== confirmPassword)   req.flash("error", "Passwords don't match")
+  if (req.session.flash.error.length > 0) return res.redirect("/users/new")
 
 
    db.oneOrNone('SELECT email FROM users WHERE email = $1;', [cleanedEmail])
