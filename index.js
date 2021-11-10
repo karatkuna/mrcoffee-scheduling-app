@@ -4,7 +4,7 @@ const express = require('express')
 const morgan = require('morgan')
 const ejs = require('ejs')
 const session = require('express-session')
-
+//const flash = require('express-flash')
 const homeRouter = require('./routes/home')
 const usersRouter = require('./routes/users')
 const schedulesRouter = require('./routes/schedules')
@@ -39,7 +39,7 @@ app.use(session({
   secret: process.env.SESSION_SECRET
 }))
 
-
+//app.use(flash())
 // ROUTES
  app.use('/users', usersRouter)
  app.use('/schedules', schedulesRouter)

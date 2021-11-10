@@ -17,9 +17,7 @@
           <th>FirstName</th>
           <th>LastName</th>
           <th>Email</th> 
-          <th>Day</th>
-          <th>Start_at</th>
-          <th>End_at</th>
+         
         </tr>
       </thead>
       <tbody>
@@ -29,7 +27,29 @@
               <td><%= user[0].email %></td>
               
           </tr>
-         
+      </tbody>
+     </table>
+     
+
+    <table>
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Start_at</th>
+            <th>End_at</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (let i = 0; i < schedules.length; i++) { %>
+            <tr class="rUser r<%= schedules[i].user_id %>">
+              <td><%= weekday[schedules[i].day] %></td>
+              <td><%= schedules[i].start_at %></td>
+              <td><%= schedules[i].end_at %></td>
+            </tr>
+          <% } %>
+        </tbody>
+      
+      </table>
 
      
     
