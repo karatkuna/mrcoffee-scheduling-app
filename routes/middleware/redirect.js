@@ -1,3 +1,4 @@
+
 module.exports.redirectToLogin = (req, res, next) => {
   if(!req.session.userId) {
     res.clearCookie('mrcoffee_sid')
@@ -14,3 +15,6 @@ module.exports.redirectToHome = (req, res, next) => {
     next()
   }
 }
+  
+
+
