@@ -64,7 +64,9 @@ router.post('/register', (req, res) => {
 // display login form
 router.get('/', redirectToHome, (req, res) => {
   res.clearCookie('mrcoffee_sid')
-  res.render('pages/login')
+  res.render('pages/login', {
+    errors: req.flash("error")
+  })
 })
 
 router.post('/', redirectToHome, (req, res) => {
@@ -73,21 +75,30 @@ router.post('/', redirectToHome, (req, res) => {
   const cleanedEmail = cleanEmail(email)
 
   // 1. validate email
-  if (!email || !password) return res.send("Please enter both emailsd and password")
-  if(!isValid(cleanedEmail, emailRegex)) return res.send("Email is not valid")
+  if (!email || !password) req.flash("error", "Please enter both email and password")
+  if(!isValid(cleanedEmail, emailRegex)) req.flash("error", "Email is not valid")
+
+  if (req.session.flash.error && req.session.flash.error.length > 0) return res.redirect("/login")
 
   
   // 2. does user exist?
   db.oneOrNone('SELECT * FROM users WHERE email=$1;', [cleanedEmail])
   .then(user => {
-    if(!user) return res.send("Credentials are not correct")
+    if(!user) {
+      req.flash("error", "Credentials are not correct")
+      return res.redirect('/login')
+    }
 
     // 3. if so, is password correct?
     const checkPassword = bcrypt.compareSync(password, user.password)
-    if(!checkPassword) return res.send("Credentials are not correct")
+    if(!checkPassword) {
+      req.flash("error", "Credentials are not correct")
+      return res.redirect('/login')
+    }
 
     // 4. user is valid!!!
     req.session.userId = user.id
+    req.session.firstname = user.firstname
     console.log(req.session)
     // res.send({
     //   message: "User logged in",

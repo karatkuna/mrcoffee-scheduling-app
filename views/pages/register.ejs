@@ -1,52 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%;">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <title>Register</title>
-    
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <title>Register</title>
 </head>
-<body>
-    <!--ERROR-->
+<body class="signup-login">
+  <!--ERROR-->
+  <section class="signup-box">
     <% if (errors && errors.length > 0){ %>
-   <% for (let i = 0; i < errors.length; i++){ %>
-     <p class ="error"><%= errors[i] %> </p>
-   <% } %>
-   <% } %>
-        <form method="POST" action="/users/new" novalidate>
-            
-            <div>
-                <label for="fname">FirstName</label>
-                <input id="fname" type="text" name="firstname" required>
-              </div>
+      <% for (let i = 0; i < errors.length; i++){ %>
+        <p class ="error-msg"><%= errors[i] %> </p>
+      <% } %>
+    <% } %>
+    <form method="POST" action="/users/new" novalidate>
+      <div class="login-logo"><img class="logo" src="/assets/logo_dark.png"></div>
+      <div>
+        <label for="fname">FirstName</label>
+        <input id="fname" type="text" name="firstname" required>
+      </div>
 
-            <div>
-                <label for="lname">LastName</label> 
-                <input id="lname" type="text" name="lastname" required>
-              </div>
+      <div>
+        <label for="lname">LastName</label> 
+        <input id="lname" type="text" name="lastname" required>
+      </div>
 
-            <div>
-                <label for="email">Email</label>
-                <input id="email" type="email" name="email" required>
-              </div>
+      <div>
+        <label for="email">Email</label>
+        <input id="email" type="text" name="email" required>
+      </div>
 
-            <div>
-                <label for="password">Password</label>
-                <input id="password" type="password" name="password" required>
-              </div>
-              
-              <div>
-                <label for="confirmPassword">ConfirmPassword</label>
-                <input id="confirmPassword" type="password" name="confirmPassword" required>
-              </div>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" type="password" name="password" required>
+      </div>
+      
+      <div>
+        <label for="confirmPassword">Confirm Password</label>
+        <input id="confirmPassword" type="password" name="confirmPassword" required>
+      </div>
 
-              <button type ="submit">Sign Up</button>
-              <!--<input type="reset" class="">-->
-              <b>Already have an account? <a href ="/">Sign in</a></b>
+      <button class="btn btn-login" type ="submit">Sign Up</button>
+      <!--<input type="reset" class="">-->
+      <p>Already have an account? <a href ="/">Sign in</a></p>
 
-        </form>
-    
+    </form>
+  </section>  
 </body>
 </html>

@@ -141,7 +141,9 @@ router.post('/new', (req, res) => {
   if (!isValid(cleanedEmail, emailRegex)) req.flash("error", "Email not valid")
   if (!isValid(password, passwordRegex)) req.flash("error", "Password must be 6 characters or more")
   if (password !== confirmPassword)   req.flash("error", "Passwords don't match")
-  if (req.session.flash.error.length > 0) return res.redirect("/users/new")
+
+  console.log(req.session)
+  if (req.session.flash.error && req.session.flash.error.length > 0) return res.redirect("/users/new")
 
   db.oneOrNone('SELECT email FROM users WHERE email = $1;', [cleanedEmail])
   .then((user) => {
@@ -153,9 +155,7 @@ router.post('/new', (req, res) => {
     db.none('INSERT INTO users (firstname, lastname, email, password) VALUES ($1, $2, $3, $4);', [firstname, lastname, cleanedEmail, hash])
 
     .then(() => {
-      res.flash('success', 'User successfully created, please login.')
-      res.flash('success', 'Good job!')
-      res.redirect('/users/login')
+      res.redirect('/login')
     })
     
     .catch((err) => {

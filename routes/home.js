@@ -11,10 +11,10 @@ router.get('/', redirectToLogin, (req, res) => {
   .then(schedules => {
     //const userId = req.session.userId;
 
-    console.log(schedules)
     res.render('pages/home', {
       weekday,
-      schedules
+      schedules,
+      firstname: req.session.firstname
     })
   })
   
