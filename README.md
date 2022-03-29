@@ -1,7 +1,7 @@
 # Mr.Coffee Scheduling App
-Purpose: Manage staff roster for Mr.Coffee
+## Purpose: Manage staff roster for Mr.Coffee
 
-Features:
+## Features:
 - Create user(staff) account
 - View/Alter/Delete user infomation
 - Add/Delete working time for each staff
