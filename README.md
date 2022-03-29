@@ -10,9 +10,13 @@ Features:
 # INSTALLATION
 
 1.````Clone project: git clone https://github.com/karatkuna/mrcoffee-scheduling-app.git ````
+
 2.````Approach folder: cd mrcoffee-scheduling-app````
+
 3.````Install packages: npm install````
+
 4.````Config credential info: .env file, refer to .env.sample````
+
 5.````Run project: npm run dev````
 
 
