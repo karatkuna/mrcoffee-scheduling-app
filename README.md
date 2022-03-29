@@ -9,7 +9,7 @@
 - View working schedule by selected staff
 
 ### Language/Framework/Technology used:
-Javascript, HTML, CSS, expressJS
+Javascript, HTML, CSS, PostgreSQL, expressJS
 
 ### NPM packages
 bcryptjs, dotenv, ejs, express, express-flash, express-session, joi, method-override, morgan, pg-promise
