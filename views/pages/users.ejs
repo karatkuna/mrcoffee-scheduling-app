@@ -1,86 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Mr.Coffee's - Schedule Management App</title>
-</head>
-<body>
-  
-  <%- include('../partials/header'); %>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Mr.Coffee's - Schedule Management App</title>
+  </head>
+  <body>
+    <%- include('../partials/header'); %>
 
-  <main>
+    <main>
+      <div class="title">
+        <h1>User Information</h1>
+      </div>
 
-    <div class="title">
-      <h1>User Information</h1>
-      
-    </div>
-
-    <section>
+      <section>
         <form id="myform" method="POST" action="/" defer>
-            <table>
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>View</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
+          <table>
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>View</th>
+                <th>Edit</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
 
-                <tbody>
-                    <% for(let i = 0; i < users.length; i++) { %>
-                    <tr>  
-                        <td><%= users[i].firstname %></td>
-                        <td><%= users[i].lastname %></td>
-                        <td><%= users[i].email %></td>
-                        <td class="text-center"><a class="btn-ico btn-view-user" href="/users/<%=users[i].id %>"><i class='far fa-file-alt'></i></a></td>
-                        <td class="text-center"><button type="button" id="DELETE_<%= users[i].id %>" class="btn-ico btn-del-user"><i  class="fa fa-trash-o"></i></button></td>
-                    </tr>
-                    <% } %>
-                </tbody>
-            </table>
-            <input type="text" id="user_id" name="user_id" hidden>
+            <tbody>
+              <% for(let i = 0; i < users.length; i++) { %>
+              <tr>
+                <td><%= users[i].firstname %></td>
+                <td><%= users[i].lastname %></td>
+                <td><%= users[i].email %></td>
+                <td class="text-center">
+                  <a class="btn-ico btn-view-user" href="/users/<%=users[i].id %>">
+                    <i class="far fa-file-alt"></i>
+                  </a>
+                </td>
+                <td class="text-center">
+                  <a class="btn-ico btn-edit-user" href="/users/<%=users[i].id %>/update">
+                    <i class="fa fa-pencil-square-o"></i>
+                  </a>
+                </td>
+                <td class="text-center">
+                  <button type="button" id="DELETE_<%= users[i].id %>" class="btn-del-user">
+                    <i class="fa fa-trash-o"></i>
+                  </button>
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+          <input type="text" id="user_id" name="user_id" hidden />
         </form>
-    </section> 
-    <%- include('../partials/footer'); %>
-  </main>
+      </section>
+      <%- include('../partials/footer'); %>
+    </main>
 
-  <script>
-    if (document.addEventListener) document.addEventListener("click", handleClick, false)
-    else if (document.attachEvent) document.attachEvent("onclick", handleClick)
-  
-    function handleClick(event) {
-      event = event || window.event;
-      event.target = event.target || event.srcElement;
-  
-      const element = event.target;
-      let e = null
+    <script>
+      if (document.addEventListener)
+        document.addEventListener("click", handleClick, false);
+      else if (document.attachEvent)
+        document.attachEvent("onclick", handleClick);
 
-      if(element.type == 'button') e = element
-      if(element.parentNode.type == 'button') e = element.parentNode
+      function handleClick(event) {
+        event = event || window.event;
+        event.target = event.target || event.srcElement;
 
-      const name = 'Name: ' + e.parentNode.parentNode.children[0].innerText + ' ' + e.parentNode.parentNode.children[1].innerText
-      const email = 'Email: ' + e.parentNode.parentNode.children[2].innerText
-      
-      if(e != null) {
-        const msg = `Are you sure you want to delete this user account? This process cannot be undone.\n\n${name}\n${email}`
-        if(confirm(msg) === true) {
-          const action = e.id.split("_")
-        
-          document.getElementById("user_id").value = action[1]
-          document.getElementById("myform").action = "/users?_method=" + action[0]
-          document.getElementById("myform").submit()
+        const element = event.target;
+        let e = null;
+
+        if (element.type == "button") e = element;
+        if (element.parentNode.type == "button") e = element.parentNode;
+
+        if (e != null) {
+          const [action, userId] = e.id.split("_");
+          const [fname, lname, email] = e.parentNode.parentNode.children;
+
+          if (action === "DELETE") {
+            const msg = `Are you sure you want to delete this user: ${fname.innerText} ${lname.innerText} ? This process cannot be undone.`;
+            if (confirm(msg) === true) {
+              document.getElementById("user_id").value = userId;
+              document.getElementById("myform").action = "/users?_method=" + action;
+              document.getElementById("myform").submit();
+            }
+          }
         }
       }
-    }
-  </script>
-  <script src="/functions.js"></script>
-</body>
+    </script>
+    <script src="/functions.js"></script>
+  </body>
 </html>

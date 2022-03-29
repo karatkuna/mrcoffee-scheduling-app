@@ -1,11 +1,11 @@
 * {
   box-sizing: border-box;
-  font-family: 'Urbanist', sans-serif;
+  font-family: "Urbanist", sans-serif;
 }
 
 body {
   margin: 0 auto;
-  background-color: #233C4B;
+  background-color: #233c4b;
 }
 
 a {
@@ -22,8 +22,10 @@ ul {
   list-style-type: none;
 }
 
-table, td, th { 
-  border: 2px solid #F8F8F8;
+table,
+td,
+th {
+  border: 2px solid #f8f8f8;
   word-wrap: break-word;
 }
 
@@ -31,24 +33,26 @@ table {
   width: 100%;
   margin-bottom: 40px;
   border-collapse: collapse;
-  background-color: #FFF;
+  background-color: #fff;
   border-radius: 1em;
   overflow: hidden;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(56, 56, 56, 0.1);
 }
 
-th, td {
+th,
+td {
   padding: 15px;
 }
 
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
-input:-webkit-autofill:focus, 
-input:-webkit-autofill:active  {
-    box-shadow: 0 0 0 30px white inset !important;
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  box-shadow: 0 0 0 30px white inset !important;
 }
 
-input[type=text], input[type=password] {
+input[type="text"],
+input[type="password"] {
   min-width: 300px;
   padding-left: 10px;
   padding-right: 10px;
@@ -56,7 +60,7 @@ input[type=text], input[type=password] {
   border-radius: 10px;
 }
 
-input[type=password] {
+input[type="password"] {
   font-size: 3rem;
   border-radius: 10px;
 }
@@ -70,9 +74,8 @@ header {
   margin: 0;
   padding: 0;
   text-align: center;
-  color: #FFF;
+  color: #fff;
 }
-
 
 main {
   margin-left: 160px;
@@ -80,12 +83,12 @@ main {
   padding-bottom: 5px;
   padding-left: 25px;
   padding-right: 25px;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   border-radius: 25px 0px 0px 25px;
 }
 
 footer {
-  margin-top: 100px
+  margin-top: 100px;
 }
 
 .copyright {
@@ -110,14 +113,14 @@ nav {
   margin: 0;
   padding: 0;
   text-align: left;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .nav-item {
   padding-top: 25px;
   padding-bottom: 25px;
   padding-left: 20px;
-  background-color: #233C4B;
+  background-color: #233c4b;
 }
 
 .i0 {
@@ -147,7 +150,7 @@ nav {
 }
 
 .title {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   padding-left: 30px;
   display: flex;
   justify-content: space-between;
@@ -155,15 +158,15 @@ nav {
 }
 
 .border1 {
-  border: 1px solid saddlebrown
+  border: 1px solid saddlebrown;
 }
 
 .border2 {
-  border: 1px solid rgb(2, 99, 2)
+  border: 1px solid rgb(2, 99, 2);
 }
 
 .border3 {
-  border: 1px solid rgb(0, 0, 82)
+  border: 1px solid rgb(0, 0, 82);
 }
 
 .flex-box {
@@ -204,27 +207,67 @@ nav {
   margin-top: 0px;
 }
 
-.card-color0 { background-color: #E6B0AA; }
-.card-color1 { background-color: #D7BDE2; }
-.card-color2 { background-color: #F5CBA7; }
-.card-color3 { background-color: #A9CCE3; }
-.card-color4 { background-color: #A3E4D7; }
-.card-color5 { background-color: #F9E79F; }
-.card-color6 { background-color: #D2B4DE }
-.card-color7 { background-color: #AED6F1; }
-.card-color8 { background-color: #A9DFBF; }
-.card-color9 { background-color: #FAD7A0; }
+.card-color0 {
+  background-color: #e6b0aa;
+}
+.card-color1 {
+  background-color: #d7bde2;
+}
+.card-color2 {
+  background-color: #f5cba7;
+}
+.card-color3 {
+  background-color: #a9cce3;
+}
+.card-color4 {
+  background-color: #a3e4d7;
+}
+.card-color5 {
+  background-color: #f9e79f;
+}
+.card-color6 {
+  background-color: #d2b4de;
+}
+.card-color7 {
+  background-color: #aed6f1;
+}
+.card-color8 {
+  background-color: #a9dfbf;
+}
+.card-color9 {
+  background-color: #fad7a0;
+}
 
-.name-cir-color0 { background-color: #E6B0AA; }
-.name-cir-color1 { background-color: #C39BD3; }
-.name-cir-color2 { background-color: #F0B27A; }
-.name-cir-color3 { background-color: #7FB3D5; }
-.name-cir-color4 { background-color: #76D7C4; }
-.name-cir-color5 { background-color: #F7DC6F; }
-.name-cir-color6 { background-color: #BB8FCE; }
-.name-cir-color7 { background-color: #85C1E9; }
-.name-cir-color8 { background-color: #7DCEA0; }
-.name-cir-color9 { background-color: #F8C471; }
+.name-cir-color0 {
+  background-color: #e6b0aa;
+}
+.name-cir-color1 {
+  background-color: #c39bd3;
+}
+.name-cir-color2 {
+  background-color: #f0b27a;
+}
+.name-cir-color3 {
+  background-color: #7fb3d5;
+}
+.name-cir-color4 {
+  background-color: #76d7c4;
+}
+.name-cir-color5 {
+  background-color: #f7dc6f;
+}
+.name-cir-color6 {
+  background-color: #bb8fce;
+}
+.name-cir-color7 {
+  background-color: #85c1e9;
+}
+.name-cir-color8 {
+  background-color: #7dcea0;
+}
+.name-cir-color9 {
+  background-color: #f8c471;
+}
 
 .btn {
   margin: 4px 2px;
@@ -245,7 +288,9 @@ nav {
   cursor: pointer;
 }
 
-.del-schedule:hover, .s-btn-add:hover, .btn-ico:hover {
+.del-schedule:hover,
+.s-btn-add:hover,
+.btn-ico:hover {
   opacity: 0.7;
 }
 
@@ -257,8 +302,8 @@ nav {
 }
 
 .btn-add-user {
-  color: white; 
-  background-color: #1C3C55;
+  color: white;
+  background-color: #1c3c55;
 }
 
 .btn-add-user:hover {
@@ -266,15 +311,17 @@ nav {
 }
 
 .btn-add-schedule {
-  color: white; 
-  background-color: #B70503; 
+  color: white;
+  background-color: #b70503;
 }
 
 .btn-add-schedule:hover {
-  background-color: #e41815; 
+  background-color: #e41815;
 }
 
-.btn-view-user, .btn-edit-user, .btn-del-user {
+.btn-view-user,
+.btn-edit-user,
+.btn-del-user {
   padding: 7px 10px;
   font-size: 1.1rem;
   color: #1a3d56;
@@ -297,7 +344,8 @@ nav {
 }
 /* || SCHEDULES PAGE */
 
-.schedule-box1, .schedule-box2 {
+.schedule-box1,
+.schedule-box2 {
   margin-bottom: 30px;
 }
 
@@ -328,7 +376,8 @@ nav {
   border: 0;
 }
 
-.tab-result th, .tab-result td {
+.tab-result th,
+.tab-result td {
   margin: 0;
   padding: 8px;
   text-align: left;
@@ -340,8 +389,8 @@ nav {
   width: 30%;
   padding: 20px;
   display: block;
-  color: #FFF;
-  background-color: #F4A500;
+  color: #fff;
+  background-color: #f4a500;
   border-radius: 15px;
 }
 
@@ -351,27 +400,29 @@ nav {
 }
 
 .new-record {
-  background-color: #FFF;
+  background-color: #fff;
   animation-name: newRecord;
   animation-duration: 4s;
 }
 
 .s-btn-add {
   padding: 4px 10px;
-  background-color: rgb(238, 238, 238);
+  background-color: rgb(209, 209, 209);
   border: none;
   border-radius: 15px;
 
   font-size: 1.3rem;
   font-weight: 700;
-  color: #FFF
+  color: #fff;
 }
 
 .td-schedule {
   position: relative;
 }
 
-.edit-schedule, .del-schedule, .s-btn-add {
+.edit-schedule,
+.del-schedule,
+.s-btn-add {
   cursor: pointer;
 }
 
@@ -411,7 +462,7 @@ nav {
   padding: 20px 20px;
   border: 1px solid lightgray;
   border-radius: 25px;
-  background-color: #FFF;
+  background-color: #fff;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(56, 56, 56, 0.1);
 }
 
@@ -424,7 +475,7 @@ nav {
 
 .btnGreen {
   padding: 15px 35px;
-  background-color: #4CAF50; /* Green */
+  background-color: #4caf50; /* Green */
 }
 
 .btnGreen:hover {
@@ -486,26 +537,32 @@ nav {
 }
 
 .new-record {
-  background-color: #FFF;
+  background-color: #fff;
   animation-name: newRecord;
   animation-duration: 4s;
 }
 
 @keyframes newRecord {
-  from {background-color: #f3a601;}
-  to {background-color: fff;}
+  from {
+    background-color: #f3a601;
+  }
+  to {
+    background-color: fff;
+  }
 }
 
 /* || LOGIN & SIGNUP PAGE */
 
-.body-login, .body-signup {
+.body-login,
+.body-signup {
   height: 100%;
   position: relative;
 }
 
-.login-box, .signup-box {
+.login-box,
+.signup-box {
   padding: 30px 15px;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   text-align: center;
   margin: 0;
   position: absolute;
@@ -516,7 +573,8 @@ nav {
   border-radius: 25px;
 }
 
-.login-box a:hover, .signup-box a:hover {
+.login-box a:hover,
+.signup-box a:hover {
   text-decoration: underline;
 }
 
@@ -565,8 +623,6 @@ nav {
   margin-right: auto;
 }
 
-
-
 /* USER PROFILE PAGE */
 .user-info td {
   text-align: center;
@@ -609,5 +665,4 @@ nav {
     width: 100px;
     text-align: left;
   }
-  
 }
