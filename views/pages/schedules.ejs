@@ -1,152 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles.css">
-  <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>Mr.Coffee's - Schedule Management App</title>
-</head>
-<body onload="loadSchedules()">
-  <%- include('../partials/header'); %>
-  
-  <main>
-    <section>
-      <div class="title">
-        <h1>Schedules</h1>
-      </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@100;200;300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Mr.Coffee's - Schedule Management App</title>
+  </head>
+  <body onload="loadSchedules()">
+    <%- include('../partials/header'); %>
 
-      <!--<div>
-        <a href="/schedules/new"><div class="btn btnGreen btn-triple">Add New Schedule</div></a>
-      </div>-->
-    </section>
-    
-    <section class="schedule-box1">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <% for(let i = 1; i < weekday.length; i++) { %>
-            <th><%= weekday[i] %></th>
-            <% } %>
-          </tr>
-        </thead>
+    <main>
+      <section>
+        <div class="title">
+          <h1>Schedules</h1>
+        </div>
+      </section>
 
-        <tbody>
-          <% for(let i = 0; i < users.length; i++) { %>
-          <tr>
-            <td class="text-left"><%= users[i].firstname %></td>
-            <% for(let j = 1; j < weekday.length; j++) { %>
-              <% let key = users[i].id + " " + j; %>
-              <% if(typeof newArraySchedule[key + " start"] != 'undefined') { %>
-                <% if( typeof userId != 'undefined' && userId == users[i].id && typeof day != 'undefined' && day == j) { %>
-                  <td class="new-record td-schedule">
-                <% }else{ %>
-                  <td class="td-schedule">
-                <% } %>
-                    <%# <div class="edit-schedule"><i class='far fa-edit'></i></div> %>
-                    <button type="button" id="DELETE_<%= users[i].id %>_<%= j %>"  class="del-schedule"><i class="fa fa-trash-o"></i></button>
-                    <div><%= newArraySchedule[key + " start"] %></div>
-                    <div><%= newArraySchedule[key + " end"] %></div>
-                  </td>                
-              <% }else{ %>
-                <td class="text-center">
-                  <a href="/schedules/<%= users[i].id + '/' + j %>/new"><button class="s-btn-add">+</button></a>
-                </td>
-              <% } %>
-            <% } %>
-          </tr>
-          <% } %>
-        </tbody>
-      </table>
-    </section>
-
-    <section class="schedule-box2">
-
-      <div class="select-user-box">
-        <span class="select-user">Select user:</span>
-        
-        <span class="select-user">
-          <input type="radio" id="userx" name="user" value="-999" onclick="changeLocation(this);"> All
-        </span>
-
-        <% for(let i = 0; i < users.length; i++) { %>
-        <span class="select-user">
-          <input type="radio" id="user<%= users[i].id %>" name="user" value="<%= users[i].id %>" onclick="changeLocation(this);"> <%= users[i].firstname + " " + users[i].lastname %>
-        </span>
-        <% } %>
-
-      </div>
-
-      <div class="result-box">
-        <table class="tab-result">
+      <section class="schedule-box1">
+        <table>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Day</th>
-              <th>Start</th>
-              <th>End</th>
+              <th></th>
+              <% for(let i = 1; i < weekday.length; i++) { %>
+              <th><%= weekday[i] %></th>
+              <% } %>
             </tr>
           </thead>
+
           <tbody>
-            <% for(let i = 0; i < schedules.length; i++){ %>
-            <tr class="rUser r<%= schedules[i].user_id %>">
-                <td><%= schedules[i].firstname %></td>
-                <td><%= weekday[schedules[i].day] %></td>
-                <td><%= schedules[i].start_at %></td>
-                <td><%= schedules[i].end_at %></td>
+            <% for(let i = 0; i < users.length; i++) { %>
+            <tr>
+              <td class="text-left"><%= users[i].firstname %></td>
+              <% for(let j = 1; j < weekday.length; j++) { %> <% let key =
+              users[i].id + " " + j; %> <% if(typeof newArraySchedule[key + "
+              start"] != 'undefined') { %> <% if( typeof userId != 'undefined'
+              && userId == users[i].id && typeof day != 'undefined' && day == j)
+              { %>
+              <td class="new-record td-schedule"><% }else{ %></td>
+
+              <td class="td-schedule">
+                <% } %> <%#
+                <div class="edit-schedule"><i class="far fa-edit"></i></div>
+                %>
+                <button type="button" id="DELETE_<%= users[i].id %>_<%= j %>" class="del-schedule">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+                <div><%= newArraySchedule[key + " start"] %></div>
+                <div><%= newArraySchedule[key + " end"] %></div>
+              </td>
+              <% }else{ %>
+              <td class="text-center">
+                <a href="/schedules/<%= users[i].id + '/' + j %>/new">
+                  <button class="s-btn-add">+</button>
+                </a>
+              </td>
+              <% } %> <% } %>
             </tr>
             <% } %>
           </tbody>
         </table>
-      </div>
-    </section>
+      </section>
 
-    <input type="text" name="showById" id="showById" value="<%= showById %>" hidden>
-    <input type="text" name="userId" id="userId" value="<%= userId %>" hidden>
-    <form id="myform" method="POST" action="/">
-      <input type="text" id="user_id" name="user_id" hidden>
-      <input type="text" id="day" name="day" hidden>
-    </form>
+      <section class="schedule-box2">
+        <div class="select-user-box">
+          <span class="select-user">Select user:</span>
 
-    <%- include('../partials/footer'); %>
-  </main>
+          <span class="select-user">
+            <input type="radio" id="userx" name="user" value="-999" onclick="changeLocation(this);"/>All
+          </span>
 
-  <!-- footer -->
-  <script>
-    if (document.addEventListener) document.addEventListener("click", handleClick, false)
-    else if (document.attachEvent) document.attachEvent("onclick", handleClick)
-  
-    function handleClick(event) {
-      event = event || window.event;
-      event.target = event.target || event.srcElement;
-  
-      const element = event.target;
-      let e = null
+          <% for(let i = 0; i < users.length; i++) { %>
+          <span class="select-user">
+            <input
+              type="radio"
+              id="user<%= users[i].id %>"
+              name="user"
+              value="<%= users[i].id %>"
+              onclick="changeLocation(this);"
+            />
+            <%= users[i].firstname + " " + users[i].lastname %>
+          </span>
+          <% } %>
+        </div>
 
-      if(element.type == 'button') e = element
-      if(element.parentNode.type == 'button') e = element.parentNode
+        <div class="result-box">
+          <table class="tab-result">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Day</th>
+                <th>Start</th>
+                <th>End</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(let i = 0; i < schedules.length; i++){ %>
+              <tr class="rUser r<%= schedules[i].user_id %>">
+                <td><%= schedules[i].firstname %></td>
+                <td><%= weekday[schedules[i].day] %></td>
+                <td><%= schedules[i].start_at %></td>
+                <td><%= schedules[i].end_at %></td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-      if (e != null) {
-        const [action, userId, dayId] = e.id.split("_");
-        const name = "Name: " + e.parentNode.parentNode.children[0].innerText
-        const day = "Day: " + e.parentNode.parentNode.parentNode.parentNode.children[0].children[0].children[dayId].innerText
+      <input type="text" name="showById" id="showById" value="<%= showById %>" hidden />
+      <input type="text" name="userId" id="userId" value="<%= userId %>" hidden />
+      <form id="myform" method="POST" action="/">
+        <input type="text" id="user_id" name="user_id" hidden />
+        <input type="text" id="day" name="day" hidden />
+      </form>
 
-        if (action === "DELETE") {
-          const msg = `Are you absolutely sure? This will permanently delete this record \n\n${name}\n${day} \n\nThis process cannot be undone.`
-          if (confirm(msg) === true) {
-            document.getElementById("user_id").value = userId
-          document.getElementById("day").value = dayId
-          document.getElementById("myform").action = "/schedules?_method=" + action
-          document.getElementById("myform").submit()
+      <%- include('../partials/footer'); %>
+    </main>
+
+    <!-- footer -->
+    <script>
+      if (document.addEventListener)
+        document.addEventListener("click", handleClick, false);
+      else if (document.attachEvent)
+        document.attachEvent("onclick", handleClick);
+
+      function handleClick(event) {
+        event = event || window.event;
+        event.target = event.target || event.srcElement;
+
+        const element = event.target;
+        let e = null;
+
+        if (element.type == "button") e = element;
+        if (element.parentNode.type == "button") e = element.parentNode;
+
+        if (e != null) {
+          const [action, userId, dayId] = e.id.split("_");
+          const name = "Name: " + e.parentNode.parentNode.children[0].innerText;
+          const day = "Day: " + e.parentNode.parentNode.parentNode.parentNode.children[0].children[0].children[dayId].innerText;
+
+          if (action === "DELETE") {
+            const msg = `Are you absolutely sure? This will permanently delete this record \n\n${name}\n${day} \n\nThis process cannot be undone.`;
+            if (confirm(msg) === true) {
+              document.getElementById("user_id").value = userId;
+              document.getElementById("day").value = dayId;
+              document.getElementById("myform").action = "/schedules?_method=" + action;
+              document.getElementById("myform").submit();
+            }
           }
         }
       }
-    }
-  </script>
-  <script src="/functions.js"></script>
-</body>
+    </script>
+    <script src="/functions.js"></script>
+  </body>
 </html>
