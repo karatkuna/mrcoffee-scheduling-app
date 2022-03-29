@@ -1,5 +1,6 @@
 # Mr.Coffee Scheduling App
 Purpose: Manage staff roster for Mr.Coffee
+
 Features:
 - Create user(staff) account
 - View/Alter/Delete user infomation
@@ -12,6 +13,7 @@ Javascript, HTML, CSS, expressJS
 
 ### NPM packages
 bcryptjs, dotenv, ejs, express, express-flash, express-session, joi, method-override, morgan, pg-promise
+
 
 
 ## INSTALLATION
