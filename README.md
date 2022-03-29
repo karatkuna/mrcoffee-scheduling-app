@@ -1,7 +1,7 @@
 # Mr.Coffee Scheduling App
-## Purpose: Manage staff roster for Mr.Coffee
+### Purpose: Manage staff roster for Mr.Coffee
 
-## Features:
+### Features:
 - Create user(staff) account
 - View/Alter/Delete user infomation
 - Add/Delete working time for each staff
@@ -16,7 +16,7 @@ bcryptjs, dotenv, ejs, express, express-flash, express-session, joi, method-over
 
 
 
-## INSTALLATION
+## Installation
 
 1. Clone project: git clone https://github.com/karatkuna/mrcoffee-scheduling-app.git
 2. Approach folder: cd mrcoffee-scheduling-app
