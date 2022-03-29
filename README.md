@@ -7,7 +7,14 @@ Features:
 - View overall roaster
 - View working schedule by selected staff
 
-# INSTALLATION
+### Language/Framework/Technology used:
+Javascript, HTML, CSS, expressJS
+
+### NPM packages
+bcryptjs, dotenv, ejs, express, express-flash, express-session, joi, method-override, morgan, pg-promise
+
+
+## INSTALLATION
 
 1. Clone project: git clone https://github.com/karatkuna/mrcoffee-scheduling-app.git
 2. Approach folder: cd mrcoffee-scheduling-app
