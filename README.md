@@ -24,4 +24,17 @@ bcryptjs, dotenv, ejs, express, express-flash, express-session, joi, method-over
 4. Config credential info: .env file, refer to .env.sample
 5. Run project: npm run dev
 
+## App Pictures
+![alt text](https://github.com/karatkuna/mrcoffee-scheduling-app/blob/master/public/app-img/register.PNG?raw=true)
 
+![alt text](https://github.com/karatkuna/mrcoffee-scheduling-app/blob/master/public/app-img/login.PNG?raw=true)
+
+![alt text](https://github.com/karatkuna/mrcoffee-scheduling-app/blob/master/public/app-img/homepage.PNG?raw=true)
+
+![alt text](https://github.com/karatkuna/mrcoffee-scheduling-app/blob/master/public/app-img/users.PNG?raw=true)
+
+![alt text](https://github.com/karatkuna/mrcoffee-scheduling-app/blob/master/public/app-img/user-info.PNG?raw=true)
+
+![alt text](https://github.com/karatkuna/mrcoffee-scheduling-app/blob/master/public/app-img/schedule.png?raw=true)
+
+![alt text](https://github.com/karatkuna/mrcoffee-scheduling-app/blob/master/public/app-img/add-schedule.PNG?raw=true)
